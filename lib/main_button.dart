@@ -15,19 +15,18 @@ class MainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border:
-              Border.all(color: isGoogle ? Colors.blue : Colors.transparent)),
-      child: MaterialButton(
-        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-        ),
+          border: Border.all(
+              color: isGoogle ? Colors.blue.shade900 : Colors.transparent)),
+      child: MaterialButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         height: 60,
         minWidth: 350,
         color: color,
         onPressed: () {},
         child: Text(
           lable,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: isGoogle ? Colors.black : Colors.white),
         ),
       ),
     );

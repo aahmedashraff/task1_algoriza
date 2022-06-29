@@ -11,22 +11,25 @@ class TextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      style: const TextStyle(),
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        floatingLabelStyle: const TextStyle(fontSize: 25),
-        labelText: lable,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(13.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        style: const TextStyle(),
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          floatingLabelStyle: const TextStyle(fontSize: 25),
+          labelText: lable,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(13.0),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(13),
+          ),
+          hintText: 'Enter Your $lable',
+          hintStyle: const TextStyle(fontSize: 14),
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(13),
-        ),
-        hintText: 'Enter Your $lable',
-        hintStyle: const TextStyle(fontSize: 14),
+        obscureText: isPass ? true : false,
       ),
-      obscureText: isPass ? true : false,
     );
   }
 }
