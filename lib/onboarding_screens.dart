@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:task1_algoriza/content_model.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
+import 'package:task1_algoriza/login_screen.dart';
 import 'package:task1_algoriza/register_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -21,24 +23,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           Expanded(
             child: OnBoard(
+              onBoardData: onBoardData,
+              pageController: _pageController,
               skipButton: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 2.w),
                 child: Container(
                   decoration: BoxDecoration(
                       color: Colors.blueAccent.withOpacity(.8),
                       borderRadius: BorderRadius.circular(15)),
                   child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
+                    },
+                    child: Text(
                       'Skip',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
                     ),
                   ),
                 ),
               ),
 
               pageIndicatorStyle: PageIndicatorStyle(
-                width: 100,
+                width: 30.w,
                 inactiveColor: Colors.blueAccent,
                 activeColor: Colors.blue.shade900,
                 inactiveSize: const Size(8, 8),
@@ -51,25 +61,31 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      height: 60,
+                      height: 6.h,
                       minWidth: 350,
                       color: Colors.blue.shade800,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginScreen()),
+                        );
+                      },
                       child: const Text(
                         'Get Started',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
+                  SizedBox(
+                    height: 1.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Don\'t you have an account? ',
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 11.sp),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -83,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           'Sign Up',
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 13.sp,
                               color: Colors.blue.shade800,
                               fontWeight: FontWeight.bold),
                         ),
@@ -93,8 +109,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
 
-              onBoardData: onBoardData,
-              pageController: _pageController,
               // Either Provide onSkip Callback or skipButton Widget to handle skip state
             ),
           ),
