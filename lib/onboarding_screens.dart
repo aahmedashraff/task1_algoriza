@@ -3,9 +3,12 @@ import 'package:sizer/sizer.dart';
 import 'package:task1_algoriza/content_model.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:task1_algoriza/login_screen.dart';
+import 'package:task1_algoriza/main_button.dart';
 import 'package:task1_algoriza/register_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({Key? key}) : super(key: key);
+
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
@@ -17,53 +20,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: OnBoard(
-              onBoardData: onBoardData,
-              pageController: _pageController,
-              skipButton: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 2.w),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.blueAccent.withOpacity(.8),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
-                      );
-                    },
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                    ),
-                  ),
-                ),
-              ),
-
-              pageIndicatorStyle: PageIndicatorStyle(
-                width: 30.w,
-                inactiveColor: Colors.blueAccent,
-                activeColor: Colors.blue.shade900,
-                inactiveSize: const Size(8, 8),
-                activeSize: const Size(12, 12),
-              ),
-              nextButton: Column(
-                children: [
-                  Expanded(
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 6.h,
-                      minWidth: 350,
-                      color: Colors.blue.shade800,
+    return Sizer(builder: (context, orientation, deviceType) {
+      return Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: OnBoard(
+                onBoardData: onBoardData,
+                pageController: _pageController,
+                skipButton: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2.w),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent.withOpacity(.8),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: TextButton(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -71,49 +43,63 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               builder: (context) => const LoginScreen()),
                         );
                       },
-                      child: const Text(
-                        'Get Started',
-                        style: TextStyle(color: Colors.white),
+                      child: Text(
+                        'Skip',
+                        style: TextStyle(color: Colors.white, fontSize: 14.sp),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 1.h,
+                ),
+                pageIndicatorStyle: PageIndicatorStyle(
+                  width: 30.w,
+                  inactiveColor: Colors.blueAccent,
+                  activeColor: Colors.blue.shade900,
+                  inactiveSize: const Size(8, 8),
+                  activeSize: const Size(12, 12),
+                ),
+                nextButton: Column(
+                  children: [
+                    MainButton(
+                      isGoogle: false,
+                      color: Colors.blue.shade900,
+                      lable: 'Get Started',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 3.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t you have an account? ',
+                    style: TextStyle(fontSize: 11.sp),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t you have an account? ',
-                        style: TextStyle(fontSize: 11.sp),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RegisterScreen()),
-                          );
-                        },
-                        child: Text(
-                          'Sign Up',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontSize: 13.sp,
-                              color: Colors.blue.shade800,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterScreen()),
+                      );
+                    },
+                    child: Text(
+                      'Sign Up',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: 13.sp,
+                          color: Colors.blue.shade900,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),
-
-              // Either Provide onSkip Callback or skipButton Widget to handle skip state
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }

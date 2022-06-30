@@ -11,66 +11,61 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
-        body: SizedBox(
-          height: 100.h,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 5.h,
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Icon(Icons.arrow_back_ios_sharp)),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.w),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                          fontSize: 35.sp, color: Colors.blue.shade900),
-                    ),
-                  ),
-                ],
-              ),
-              SvgPicture.asset(
-                'assets/images/login.svg',
-                height: 46.h,
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              const TextInput(lable: 'Email', isPass: false),
-              SizedBox(
-                height: 2.h,
-              ),
-              const TextInput(lable: 'Password', isPass: true),
-              SizedBox(
-                height: 2.h,
-              ),
-              MainButton(
-                  lable: 'Sign In',
-                  color: Colors.blue.shade900,
-                  isGoogle: false),
-              SizedBox(
-                height: 2.h,
-              ),
-              Text(
-                'Use The App According to our policy to make sure that you are safe and secure all the time',
-                style: TextStyle(
-                  fontSize: 11.sp,
-                  color: Colors.grey,
+        body: Column(
+          children: [
+            SizedBox(
+              height: 5.h,
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(Icons.arrow_back_ios_sharp)),
                 ),
-                maxLines: 2,
-                textAlign: TextAlign.center,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  child: Text(
+                    'Login',
+                    style:
+                        TextStyle(fontSize: 35.sp, color: Colors.blue.shade900),
+                  ),
+                ),
+              ],
+            ),
+            SvgPicture.asset(
+              'assets/images/login.svg',
+              height: 46.h,
+            ),
+            SizedBox(
+              height: 2.h,
+            ),
+            const TextInput(lable: 'Email', isPass: false),
+            SizedBox(
+              height: 2.h,
+            ),
+            const TextInput(lable: 'Password', isPass: true),
+            SizedBox(
+              height: 2.h,
+            ),
+            MainButton(
+                lable: 'Sign In', color: Colors.blue.shade900, isGoogle: false),
+            SizedBox(
+              height: 2.h,
+            ),
+            Text(
+              'Use The App According to our policy to make sure that you are safe and secure all the time',
+              style: TextStyle(
+                fontSize: 11.sp,
+                color: Colors.grey,
               ),
-            ],
-          ),
+              maxLines: 2,
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       );
     });
