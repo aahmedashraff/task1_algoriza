@@ -16,6 +16,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Column(
           children: [
             SizedBox(
@@ -80,10 +81,6 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // CountryCodePicker(
-                    //   initialSelection: 'EG',
-                    //   alignLeft: true,
-                    // ),
                   ),
                   SizedBox(height: 1.h),
                   const TextInput(
@@ -92,6 +89,13 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 3.h),
                   MainButton(
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
+                    },
                     lable: 'Register',
                     isGoogle: false,
                     color: Colors.blue.shade900,

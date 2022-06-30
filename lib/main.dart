@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: OnboardingScreen(),
+          home: const OnboardingScreen(),
           theme: ThemeData(fontFamily: 'Poppins'),
         );
       },

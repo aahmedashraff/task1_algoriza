@@ -60,6 +60,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 nextButton: Column(
                   children: [
                     MainButton(
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginScreen()),
+                        );
+                      },
                       isGoogle: false,
                       color: Colors.blue.shade900,
                       lable: 'Get Started',

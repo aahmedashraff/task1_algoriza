@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -5,11 +7,13 @@ class MainButton extends StatelessWidget {
   final Color color;
   final String lable;
   final bool isGoogle;
+  final VoidCallback? onPress;
   const MainButton({
     Key? key,
     required this.lable,
     required this.color,
     required this.isGoogle,
+    this.onPress,
   }) : super(key: key);
 
   @override
@@ -28,7 +32,7 @@ class MainButton extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             color: color,
-            onPressed: () {},
+            onPressed: onPress,
             child: Text(
               lable,
               style: TextStyle(

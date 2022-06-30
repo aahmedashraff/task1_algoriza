@@ -11,6 +11,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Column(
           children: [
             SizedBox(
@@ -43,7 +44,10 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
-            const TextInput(lable: 'Email', isPass: false),
+            const TextInput(
+              lable: 'Email',
+              isPass: false,
+            ),
             SizedBox(
               height: 2.h,
             ),
@@ -52,7 +56,16 @@ class LoginScreen extends StatelessWidget {
               height: 2.h,
             ),
             MainButton(
-                lable: 'Sign In', color: Colors.blue.shade900, isGoogle: false),
+              lable: 'Sign In',
+              color: Colors.blue.shade900,
+              isGoogle: false,
+              onPress: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+            ),
             SizedBox(
               height: 2.h,
             ),
